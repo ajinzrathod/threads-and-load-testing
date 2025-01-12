@@ -18,7 +18,7 @@ public class HelloService {
 
   public String deepRecursiveCall() {
     Random random = new Random();
-    int randomNumber = 2000 + random.nextInt(1000); // Generate a random number between 3000 and 3003
+    int randomNumber = 2000 + random.nextInt(1001); // Generate a random number between 2000 and 3000
 
     // Perform a deep recursive call with the generated random depth
     deepRecursiveCall(randomNumber, 0);
