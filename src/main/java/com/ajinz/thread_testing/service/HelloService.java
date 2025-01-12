@@ -17,8 +17,24 @@ public class HelloService {
   }
 
   public String deepRecursiveCall() {
+    // Step 1: Perform Gradle Build
+    // Use `Ctrl + Ctrl` in IntelliJ to open the command window, then execute:
+    // gradle build
+    // Note: Running the green play button in IntelliJ won't regenerate the JAR file.
+    // Building via Gradle ensures that any changes are reflected in the JAR file.
+
+    // Step 2: Run the Application with Custom Stack Size
+    // Use the terminal to set the stack size (Xss) and run the JAR:
+    // java -Xss10m -jar build/libs/thread-testing-0.0.1-SNAPSHOT.jar
+    // Explanation: The `-Xss10m` flag sets the stack size for each thread to 10 MB.
+    // This configuration helps prevent stack overflow errors for deeply recursive calls.
+
+    // Step 3: Test Recursive Calls with Random Depth
+    // With the increased stack size, the application will handle deeper recursive calls.
+    // Example: Random depth generation between 2000 and 3000 works fine,
+    // but a depth of 20000 causes a stack overflow error.
     Random random = new Random();
-    int randomNumber = 2000 + random.nextInt(1000); // Generate a random number between 3000 and 3003
+    int randomNumber = 20000 + random.nextInt(1001); // Generate a random number between 2000 and 3000
 
     // Perform a deep recursive call with the generated random depth
     deepRecursiveCall(randomNumber, 0);
