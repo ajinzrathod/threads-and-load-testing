@@ -33,6 +33,11 @@ public class HelloController {
     return helloService.sqrt();
   }
 
+  @GetMapping({"r", "r/"})
+  public String deepRecursive() {
+    return helloService.deepRecursiveCall();
+  }
+
   @GetMapping({"max", "max/"})
   public String printMax() {
 

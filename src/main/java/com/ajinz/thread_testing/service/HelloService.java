@@ -15,4 +15,29 @@ public class HelloService {
     long end = System.nanoTime();
     return "Result: " + result + "<br> Time Taken: " + (end - start) / 1_000_000_000.0 + "s";
   }
+
+  public String deepRecursiveCall() {
+    Random random = new Random();
+    int randomNumber = 2000 + random.nextInt(1000); // Generate a random number between 3000 and 3003
+
+    // Perform a deep recursive call with the generated random depth
+    deepRecursiveCall(randomNumber, 0);
+
+    return "Recursion Completed!";
+  }
+
+  private int deepRecursiveCall(int maxDepth, int currentDepth) {
+    if (currentDepth >= maxDepth) {
+      return 1;
+    }
+
+    Random random = new Random();
+    int randomValue = 1000 + random.nextInt(9001); // Generate random number
+
+    // Simulate some processing with the random value
+    int result = randomValue * 2; // Just a dummy operation to keep the stack busy
+
+    // Recursive call, increment depth
+    return 1 + deepRecursiveCall(maxDepth, currentDepth + 1);
+  }
 }
