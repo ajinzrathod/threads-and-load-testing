@@ -28,6 +28,11 @@ public class HelloController {
     return "<h1>Hello</h1>";
   }
 
+  @GetMapping({"long", "long/"})
+  public String sqrt() {
+    return helloService.sqrt();
+  }
+
   @GetMapping({"max", "max/"})
   public String printMax() {
 
