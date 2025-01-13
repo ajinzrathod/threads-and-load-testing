@@ -13,19 +13,14 @@ public class HelloController {
 
   @Autowired HelloService helloService = new HelloService();
 
+  @GetMapping({"ping", "ping/"})
+  public String health()  {
+    return "Pong";
+  }
+
   @GetMapping({"hello", "hello/"})
   public String hello() throws InterruptedException {
     Thread.sleep(3000);
     return "<h1>Hello</h1>";
-  }
-
-  @GetMapping({"long", "long/"})
-  public String sqrt() {
-    return helloService.sqrt();
-  }
-
-  @GetMapping({"r", "r/"})
-  public String deepRecursive() {
-    return helloService.deepRecursiveCall();
   }
 }
