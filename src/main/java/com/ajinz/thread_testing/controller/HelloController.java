@@ -11,6 +11,7 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class HelloController {
@@ -18,14 +19,20 @@ public class HelloController {
   private static long maxJVMAndOSOverhead = 0;
   private static long maxMetaSpace = 0;
   private static long maxHeapMemory = 0;
+  private AtomicLong counter = new AtomicLong();
 
   @Autowired HelloService helloService = new HelloService();
 
   @GetMapping({"hello", "hello/"})
   public String hello() throws InterruptedException {
-    getMemoryDetails();
     Thread.sleep(3000);
-    return "<h1>Hello</h1>";
+    counter.incrementAndGet();
+    return "<h1>Hello</h1>" + Thread.currentThread();
+  }
+
+  @GetMapping({"count", "count/"})
+  public String count() {
+    return "<h1>" + counter.get() + "</h1>";
   }
 
   @GetMapping({"long", "long/"})
