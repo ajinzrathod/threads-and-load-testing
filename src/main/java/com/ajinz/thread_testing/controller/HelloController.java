@@ -15,7 +15,7 @@ public class HelloController {
 
   @Autowired HelloService helloService = new HelloService();
 
-  @GetMapping({"ping", "ping/", ""})
+  @GetMapping({"ping", "ping/", "/"})
   public String health()  {
     return "Pong";
   }
